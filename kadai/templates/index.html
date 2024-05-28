@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>トップページ</title>
-</head>
-<body>
-    <h1>Hello World!</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}1か月間の総理の動向がわかる｜総理の1か月{% endblock %}
+
+{% block header %}
+
+<header class="bg-primary bg-gradient text-white">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">総理の1か月</h1>
+        <p class="lead">過去の総理の1か月間の動向と、その時のニュースがわかる！</p>
+        <a class="btn btn-lg btn-light" href="{% url 'account_login' %}">ログイン</a>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<!-- About section-->
+<section id="about">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+            <div class="col-lg-8">
+                <h2>このサイトについて</h2>
+                <p class="lead">総理の日々の動きを1か月ごとに、その時のニュースとともに振り返ることができます</p>
+                <ul>
+                    <li>総理の1か月間の主な動きを振り返ります</li>
+                    <li>その月のニュース、内閣支持率も一緒に表示します</li>
+                    <li>「2018年1月」以降の、検索したい「年」「月」を指定してください</li>
+                    <li>検索履歴が保存されます</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
