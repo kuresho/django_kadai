@@ -215,3 +215,6 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
 
 LOGIN_REDIRECT_URL = 'kadai:search_log'
+
+EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
+

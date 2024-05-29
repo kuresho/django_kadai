@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}検索￤総理の1か月{% endblock %}
+
+{% block active_inquiry %}active{% endblock %}
+
+{% block contents %}
+<div class="container my-div-style">
+    <div class="row">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.year }}
+                {{form.month}}
+                {{form.words}}
+            </table>
+            <button class="btn btn-primary" type="submit">検索</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

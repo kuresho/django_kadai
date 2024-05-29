@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}日記一覧￤Private Diary{% endblock %}
+{% block title %}検索履歴|総理の1か月{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
@@ -14,56 +14,24 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary float-right" href="{% url 'kadai:search' %}">検索</a>
+                <a class="btn btn-primary float-md-right " href="{% url 'kadai:search' %}">検索</a>
             </div>
-            {% for diary in diary_list %}
+            {% for kadai in kadai_list %}
             <div class="post-preview">
-                <a href="{% url 'kadai:search_result' kadai.pk %}">
+                <a href="#">
                     <h2 class="post-title">
-                        {{ kadai.month }}{{kadai.year}}
+                        {{ kadai.year }}年{{kadai.month}}月
                     </h2>
                     <h3 class="post-subtitle">
-                        {{ kadai.words }}
+                        検索ワード：{{ kadai.words }}
                     </h3>
                 </a>
-                <p class="post-meta">{{ kadai.search_at }}</p>
+                <p class="post-meta">検索日時：{{ kadai.search_at }}</p>
             </div>
             <hr class="my-4">
             {% empty %}
             <p>履歴がありません。</p>
             {% endfor %}
-
-            <!-- ページネーション処理 -->
-            {% if is_paginated %}
-            <ul class="pagination">
-                <!-- 前ページへのリンク -->
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                        <span aria-hidden="true">&laqup;</span>
-                    </a>
-                </li>
-                {% endif %}
-
-                <!-- ページ数表示 -->
-                {% for page_num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == page_num %}
-                    <li class="page-item active"><a href="#" class="page-link">{{ page_num }}</a></li>
-                    {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
-                    {% endif %}
-                {% endfor %}
-
-                <!-- 次ページへのリンク -->
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-            {% endif %}
         </div>
     </div>
 </div>
