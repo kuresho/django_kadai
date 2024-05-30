@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Kadai
 from .forms import SearchForm
 from django.urls import reverse_lazy
+from django import forms
 
 
 import re
@@ -34,5 +35,12 @@ class SearchView(LoginRequiredMixin,generic.CreateView):
         kadai.save()
 
 
+    def SearchResult(request):
+        if request.method == "POST":
+            year = request.POST['year']
+            month = request.POST['month']
+            return render(request, 'search_result.html', year)
 
 
+class SearchResultView(generic.TemplateView):
+    template_name = 'search_result.html'
