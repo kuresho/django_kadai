@@ -1,34 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}検索履歴|総理の1か月{% endblock %}
+{% block title %}検索履歴 | 総理の1か月{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
-
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/clean-blog.css' %}">
-{% endblock %}
 
 {% block contents %}
 <div class="container px-4 px-lg-5 my-div-style">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
             <div class="text-center mb-4">
-                <a class="btn btn-primary btn-lg btn-block" href="{% url 'kadai:search' %}">検索</a>
+                <a class="btn btn-primary btn-lg btn-block full-width-button" href="{% url 'kadai:search' %}">検索</a>
             </div>
-            {% for kadai in kadai_list　%}
-            <div class="post-preview">
-                <h2 class="post-title">
-                    {{ kadai.year }}年{{ kadai.month }}月
-                </h2>
-                <h3 class="post-subtitle">
-                    検索ワード：{{ kadai.words }}
-                </h3>
-                <p class="post-meta">検索日時：{{ kadai.search_at }}</p>
+            <div class="log-title">
+                <h2>・履歴一覧</h2>
             </div>
-            <hr class="my-4">
+            {% for kadai in kadai_list %}
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        {{ kadai.year }}年{{ kadai.month }}月
+                    </h2>
+                    <h3 class="post-subtitle">
+                        検索ワード：{{ kadai.words }}
+                    </h3>
+                    <p class="post-meta">検索日時：{{ kadai.search_at }}</p>
+                </div>
+                <hr class="my-4">
             {% empty %}
-            <p>履歴がありません。</p>
+                <p>履歴がありません。</p>
             {% endfor %}
         </div>
     </div>

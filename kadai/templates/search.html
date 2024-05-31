@@ -5,26 +5,25 @@
 {% block active_inquiry %}active{% endblock %}
 
 {% block contents %}
-<div class="container my-div-style">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <form action="{% url 'kadai:search_result' %}" method="POST" >
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="year">年：</label>
-                    {{ form.year }}
-                </div>
-                <div class="form-group">
-                    <label for="month">月：</label>
-                    {{ form.month }}
-                </div>
-                <div class="form-group">
-                    <label for="words">検索ワード：</label>
-                    {{ form.words }}
-                </div>
-                <button class="btn btn-primary" type="submit">検索</button>
-            </form>
-        </div>
+<div class="container">
+    <div class="my-div-style">
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <table class="table">
+                {% for field in form %}
+                <tr>
+                    <td><strong>{{ field.label_tag }}</strong></td>
+                    <td>{{ field }}</td>
+                    <td>{{ field.errors }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <button class="btn btn-primary" type="submit">検索</button>
+        </form>
     </div>
 </div>
 {% endblock %}

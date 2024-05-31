@@ -10,3 +10,12 @@ footer {
 .my-div-style {
     margin-top: 6rem;
 }
+
+.full-width-button {
+            width: 100%;
+}
+.log-title {
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+}
