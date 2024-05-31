@@ -2,16 +2,13 @@
 
 {% block title %}検索￤総理の1か月{% endblock %}
 
-{% block active_inquiry %}active{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="my-div-style">
-        <form method="post">
+        <form action="{% url 'kadai:search_result' %}" method="post">
             {% csrf_token %}
-
             {{ form.non_field_errors }}
-
             <table class="table">
                 {% for field in form %}
                 <tr>
@@ -21,8 +18,7 @@
                 </tr>
                 {% endfor %}
             </table>
-
-            <button class="btn btn-primary" type="submit">検索</button>
+            <button class="btn btn-primary" type="submit">送信</button>
         </form>
     </div>
 </div>
