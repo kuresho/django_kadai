@@ -11,12 +11,12 @@
 
 {% block contents %}
 <div class="container px-4 px-lg-5 my-div-style">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary float-md-right " href="{% url 'kadai:search' %}">検索</a>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="text-center mb-4">
+                <a class="btn btn-primary btn-lg btn-block" href="{% url 'kadai:search' %}">検索</a>
             </div>
-            {% for kadai in kadai_list %}
+            {% for kadai in kadai_list |slice:"-10:"|reverse%}
             <div class="post-preview">
                 <h2 class="post-title">
                     {{ kadai.year }}年{{ kadai.month }}月

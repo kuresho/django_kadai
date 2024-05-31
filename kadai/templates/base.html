@@ -27,7 +27,7 @@
                         <ul class="navbar-nav me-auto">
                             {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link {% block active_search %}{% endblock %}" href="{% url 'kadai:search_log' %}">履歴</a>
+                                <a class="nav-link {% block active_search %}{% endblock %}" href="{% url 'kadai:search_log' %}">検索・履歴</a>
                             </li>
                             {% endif %}
                         </ul>
