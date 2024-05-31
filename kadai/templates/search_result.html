@@ -4,5 +4,43 @@
 {% block title %}検索結果|総理の1か月{% endblock %}
 
 {% block contents %}
-<p>{{year}}</p>
+<div class="container">
+    <div class="my-div-style">
+        <h1>検索結果： {{ year }}年{{ month }}月</h1>
+        <hr>
+        <h3>内閣支持率</h3>
+        <p>{{ rate }}</p>
+        <hr>
+        <h3>総理の活動(検索ワード：{{ words }})</h3>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">年</th>
+                    <th scope="col">月</th>
+                    <th scope="col">日</th>
+                    <th scope="col">タイトル</th>
+                    <th scope="col">概要</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in PrimeMinister_month.iterrows %}
+                <tr>
+                    <td>{{ row.年 }}</td>
+                    <td>{{ row.月 }}</td>
+                    <td>{{ row.日 }}</td>
+                    <td>{{ row.タイトル }}</td>
+                    <td>{{ row.概要 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <h3>ニュース</h3>
+        <ul class="list-group">
+            {% for news_item in news %}
+            <li class="list-group-item">{{ news_item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

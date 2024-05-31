@@ -7,24 +7,24 @@
 {% block contents %}
 <div class="container my-div-style">
     <div class="row">
-        <form action="/search" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-                <div>
+        <div class="col-md-6 offset-md-3">
+            <form action="{% url 'kadai:search_result' %}" method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
                     <label for="year">年：</label>
-                    <p id="year" name="year">{{ form.year }}</p>
+                    {{ form.year }}
                 </div>
-                <div>
-                    <label for="year">月：</label>
-                    <p id="month" name="month">{{ form.month }}</p>
+                <div class="form-group">
+                    <label for="month">月：</label>
+                    {{ form.month }}
                 </div>
-                <div>
-                    <label for="year">検索ワード：</label>
-                    <p id="words" name="words">{{ form.words }}</p>
+                <div class="form-group">
+                    <label for="words">検索ワード：</label>
+                    {{ form.words }}
                 </div>
-            <a class="btn btn-primary" href="{% url 'kadai:search_result' %}">検索</a>
-        </form>
-
-        <p>{{year_month}}</p>
+                <button class="btn btn-primary" type="submit">検索</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

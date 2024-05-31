@@ -18,14 +18,12 @@
             </div>
             {% for kadai in kadai_list %}
             <div class="post-preview">
-                <a href="#">
-                    <h2 class="post-title">
-                        {{ kadai.year }}年{{kadai.month}}月
-                    </h2>
-                    <h3 class="post-subtitle">
-                        検索ワード：{{ kadai.words }}
-                    </h3>
-                </a>
+                <h2 class="post-title">
+                    {{ kadai.year }}年{{ kadai.month }}月
+                </h2>
+                <h3 class="post-subtitle">
+                    検索ワード：{{ kadai.words }}
+                </h3>
                 <p class="post-meta">検索日時：{{ kadai.search_at }}</p>
             </div>
             <hr class="my-4">
